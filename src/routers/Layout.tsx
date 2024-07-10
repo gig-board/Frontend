@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import  Header  from '../components/utils/Header';
+import Header from '../components/utils/Header';
 
 export const Layout = () => {
   const location = useLocation();

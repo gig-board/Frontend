@@ -3,16 +3,15 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './Layout';
 
 const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-      ],
-    },
-  ]);
+  {
+    path: '/',
+    element: <Layout />,
+    children: [],
+  },
+]);
 
 const Routers = () => {
-    return <RouterProvider router={router} />;
-  };
-  
-  export default Routers;
+  return <RouterProvider router={router} />;
+};
+
+export default Routers;

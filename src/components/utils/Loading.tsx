@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import loading from '../../assets/Loading.json';
+import gif from '../../assets/Loading.json';
 import Lottie from './LottieComponent';
 
 const Container = styled.div`
@@ -20,21 +20,20 @@ const Container = styled.div`
   z-index: 50;
 `;
 export const Loading = () => {
-    const [loading, setLoading] = useState(true);
-  
-    useEffect(() => {
-      const timer = setTimeout(() => setLoading(false), 3000);
-      return () => clearTimeout(timer);
-    }, []);
-    const stars = Array.from({ length: 10 });
-  
-    return (
-      <>
-        {loading && (
-          <Container>
-            <Lottie animationData={loading} loop={true} autoplay={true} style={{ width: '35%' }} />
-          </Container>
-        )}
-      </>
-    );
-  }
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <>
+      {loading && (
+        <Container>
+          <Lottie animationData={gif} loop={true} autoplay={true} style={{ width: '35%' }} />
+        </Container>
+      )}
+    </>
+  );
+};

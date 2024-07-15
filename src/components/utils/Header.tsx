@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { ReactComponent as Logo } from '../../assets/Logo-Header.svg';
 import { Link } from 'react-router-dom';
+import SideBar from './Sidebar';
 
 const HeaderWrapper = styled.nav`
   width: 100vw;
@@ -40,17 +41,26 @@ const ProfileImg = styled.div`
   background: #ff7417;
 `;
 export default function Header() {
+  const [sideBarOpen, setSideBarOpen] = React.useState(false);
+
+  const toggleSideBar = (open: boolean) => {
+    setSideBarOpen(open);
+  };
+
   return (
-    <HeaderWrapper>
-      <SidebarIcon />
-      <LogoWrapper>
-        <Link to="/main">
-          <HeaderLogo />
-        </Link>
-        <Link to="/mypage">
-          <ProfileImg />
-        </Link>
-      </LogoWrapper>
-    </HeaderWrapper>
+    <>
+      <HeaderWrapper>
+        <SidebarIcon onClick={() => toggleSideBar(!sideBarOpen)} />
+        <LogoWrapper>
+          <Link to="/main">
+            <HeaderLogo />
+          </Link>
+          <Link to="/mypage">
+            <ProfileImg />
+          </Link>
+        </LogoWrapper>
+      </HeaderWrapper>
+      <SideBar sideBarOpen={sideBarOpen} toggleSideBar={toggleSideBar} />
+    </>
   );
 }

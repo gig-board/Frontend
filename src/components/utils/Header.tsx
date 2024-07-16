@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import SideBar from './Sidebar';
 
 const HeaderWrapper = styled.nav`
-  width: 100vw;
+  width: 100%;
   height: 64px;
   background: black;
   position: relative;

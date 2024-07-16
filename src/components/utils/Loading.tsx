@@ -19,21 +19,26 @@ const Container = styled.div`
   background: black;
   z-index: 50;
 `;
+const LogoText = styled.h1`
+  color: #ff7417;
+  letter-spacing: 1rem;
+`;
 export const Loading = () => {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => setLoading(false), 3000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <>
-      {loading && (
-        <Container>
-          <Lottie animationData={gif} loop={true} autoplay={true} style={{ width: '35%' }} />
-        </Container>
-      )}
+      (
+      <Container>
+        <Lottie animationData={gif} loop={true} autoplay={true} style={{ width: '30%' }} />
+        <LogoText>G I G B O A R D</LogoText>
+      </Container>
+      )
     </>
   );
 };

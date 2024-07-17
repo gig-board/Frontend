@@ -21,3 +21,9 @@ export const TitleWrapper = styled.div`
   align-items: baseline;
   margin: 2rem 0;
 `;
+export const MapWrapper = styled.div`
+  width: 100%;
+  height: 400px;
+  border: 1px solid #ff7417;
+  border-radius: 10px;
+`;

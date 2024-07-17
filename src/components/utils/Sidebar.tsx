@@ -54,7 +54,7 @@ export default function Sidebar({ sideBarOpen, toggleSideBar }: SidebarProps) {
   };
 
   return (
-    <div className="w-full h-full" onClick={() => toggleSideBar(false)}>
+    <div className="" onClick={() => toggleSideBar(false)}>
       <SideBarWrpper open={sideBarOpen} onClick={() => toggleDropMenu}>
         <IconContainer>
           <CloseRoundedIcon style={{ color: 'white' }} onClick={() => toggleSideBar(false)} />

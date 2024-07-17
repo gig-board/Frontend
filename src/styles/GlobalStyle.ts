@@ -14,7 +14,7 @@ export const PlainText = styled.h3`
   font-weight: 700;
 `;
 export const LinkText = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   color: #a9b5bc;
   cursor: pointer;
 `;
@@ -25,7 +25,23 @@ export const noticeText = styled.p`
   cursor: default;
 `;
 export const EditText = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   color: white;
   cursor: pointer;
+`;
+
+export const ShortInput = styled.input`
+  width: 100%;
+  height: 1vh;
+`;
+export const MultiInput = styled.input`
+  width: 100%;
+  height: 10vh;
+`;
+export const SubmmitButton = styled.button`
+  border: none;
+  border-radius: 10px;
+  background-color: #ff9045;
+  cursor: pointer;
+  padding: 10px 20px;
 `;

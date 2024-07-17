@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     kakao: any;
   }
 }
@@ -28,6 +29,7 @@ function KakaoMap() {
           center: new window.kakao.maps.LatLng(33.450701, 126.570667),
           level: 3,
         };
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const map = new window.kakao.maps.Map(container, options);
       });
     };

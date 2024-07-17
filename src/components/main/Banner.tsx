@@ -52,7 +52,6 @@ export default function Banner() {
       modules={[Autoplay, Pagination]}
       spaceBetween={50}
       slidesPerView={1}
-      pagination={{ clickable: true }}
       autoplay={{ delay: 3500, disableOnInteraction: true }}
       speed={1000}
       navigation={true}
@@ -60,6 +59,7 @@ export default function Banner() {
       loop={true}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper: SwiperType) => console.log(swiper)}
+      className="white"
     >
       <SwiperSlide>
         <GreetingContainer>

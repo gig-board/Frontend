@@ -42,7 +42,7 @@ const MenuItems = styled.p`
   }
 `;
 const MenuItem = [
-  { text: '공연 홍보', path: '/map' },
+  { text: '공연 홍보', path: '/bandpromotion' },
   { text: '밴드 모집', path: '/recruitband' },
   { text: '나의 팀짜기', path: '/map' },
   { text: '연습실 찾기', path: '/map' },

@@ -9,6 +9,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { EditText, PictureOverlay, PlainText, SubTitleText, TitleText } from '../../styles/GlobalStyle';
 import { styled } from 'styled-components';
 import sample from '../../assets/sampleimage.png';
+import { Link } from 'react-router-dom';
 const GreetingContainer = styled.div`
   width: 100%;
   height: 10vw;
@@ -69,7 +70,9 @@ export default function Banner() {
         <GreetingContainer>
           <span>
             <SubTitleText className="mb-5">반갑습니다 {}님</SubTitleText>
-            <EditText>나의 공연 홍보하기</EditText>
+            <Link to="/bandpromotion">
+              <EditText>나의 공연 홍보하기</EditText>
+            </Link>
           </span>
           <span>
             <TitleText className="text-end">GATHER YOUR BAND</TitleText>

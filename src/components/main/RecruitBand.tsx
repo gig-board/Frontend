@@ -5,14 +5,11 @@ import 'swiper/css/effect-coverflow';
 import { Swiper as SwiperType } from 'swiper/types';
 import { Autoplay, Pagination, Navigation, EffectCoverflow, Keyboard, Mousewheel } from 'swiper/modules';
 import { styled } from 'styled-components';
-import { DetailText, SmallText } from '../../styles/GlobalStyle';
+import { DetailText, PictureOverlay, SmallText } from '../../styles/GlobalStyle';
 
-const RecruitContents = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 1rem;
+import sample from '../../assets/sampleimage.png';
+
+const RecruitContents = styled.div<{ backgroundImageUrl: string }>`
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -22,23 +19,38 @@ const RecruitContents = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  background-image: url(${props => props.backgroundImageUrl});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
-const RecruitContainer = styled.div`
+const RecruitContainer = styled.div<{ backgroundImageUrl: string }>`
   width: 12vw;
   height: 12vw;
-  border: 1px solid black;
   border-radius: 10px;
   overflow: visible;
   position: relative;
   z-index: 1;
+  background-image: url(${props => props.backgroundImageUrl});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   &:hover ${RecruitContents} {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.5s, visibility 0.5s;
   }
 `;
-
+const RecruitText = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+`;
 export default function RecruitBand() {
   return (
     <Swiper
@@ -81,34 +93,58 @@ export default function RecruitBand() {
       onSwiper={(swiper: SwiperType) => console.log(swiper)}
     >
       <SwiperSlide>
-        <RecruitContainer>
-          <RecruitContents>
-            <DetailText>모집 제목</DetailText>
-            <SmallText>날짜</SmallText>
-            <SmallText>모집 상세</SmallText>
+        <RecruitContainer backgroundImageUrl={sample}>
+          <RecruitContents backgroundImageUrl={sample}>
+            <PictureOverlay className="rounded-lg">
+              <RecruitText>
+                <DetailText className="text-white">모집 제목</DetailText>
+                <SmallText className="text-[#ff7417]">날짜</SmallText>
+                <SmallText className="text-white">모집 상세</SmallText>
+              </RecruitText>
+            </PictureOverlay>
           </RecruitContents>
         </RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample}>
+          <RecruitContents backgroundImageUrl={sample}>
+            <PictureOverlay className="rounded-lg">
+              <RecruitText>
+                <DetailText className="text-white">모집 제목</DetailText>
+                <SmallText className="text-[#ff7417]">날짜</SmallText>
+                <SmallText className="text-white">모집 상세</SmallText>
+              </RecruitText>
+            </PictureOverlay>
+          </RecruitContents>
+        </RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample}>
+          <RecruitContents backgroundImageUrl={sample}>
+            <PictureOverlay className="rounded-lg">
+              <RecruitText>
+                <DetailText className="text-white">모집 제목</DetailText>
+                <SmallText className="text-[#ff7417]">날짜</SmallText>
+                <SmallText className="text-white">모집 상세</SmallText>
+              </RecruitText>
+            </PictureOverlay>
+          </RecruitContents>
+        </RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample}></RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample}></RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample}></RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample}></RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample}></RecruitContainer>
       </SwiperSlide>
     </Swiper>
   );

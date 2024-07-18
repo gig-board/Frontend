@@ -10,7 +10,10 @@ export const MainContainer = styled.div`
 export const BandWrapper = styled.div`
   width: 100%;
   height: auto;
-  margin: 0 7%;
+  margin: 0;
+`;
+export const BandContainer = styled.div`
+  margin: 0 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,6 +27,6 @@ export const TitleWrapper = styled.div`
 export const MapWrapper = styled.div`
   width: 100%;
   height: 400px;
-  border: 1px solid #ff7417;
+  border: 1.5px solid #ff7417;
   border-radius: 10px;
 `;

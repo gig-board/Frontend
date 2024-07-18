@@ -13,12 +13,20 @@ export const PlainText = styled.h3`
   font-size: 24px;
   font-weight: 700;
 `;
+export const DetailText = styled.p`
+  font-size: 20px;
+  font-weight: 600;
+`;
+export const SmallText = styled.p`
+  font-size: 18px;
+  font-weight: 500;
+`;
 export const LinkText = styled.p`
   font-size: 16px;
   color: #a9b5bc;
   cursor: pointer;
 `;
-export const noticeText = styled.p`
+export const NoticeText = styled.p`
   font-size: 16px;
   font-weight: 500;
   color: #ff7417;

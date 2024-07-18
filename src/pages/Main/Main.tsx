@@ -1,5 +1,5 @@
 import React from 'react';
-import { BandWrapper, MainContainer, MainWrapper, MapWrapper, TitleWrapper } from './MainStyle';
+import { BandContainer, BandWrapper, MainContainer, MainWrapper, MapWrapper, TitleWrapper } from './MainStyle';
 import { LinkText, SubTitleText } from '../../styles/GlobalStyle';
 import Banner from '../../components/main/Banner';
 import RecruitBand from '../../components/main/RecruitBand';
@@ -16,7 +16,9 @@ export default function Main() {
         </TitleWrapper>
       </MainContainer>
       <BandWrapper>
-        <RecruitBand />
+        <BandContainer>
+          <RecruitBand />
+        </BandContainer>
       </BandWrapper>
       <MainContainer>
         <TitleWrapper>

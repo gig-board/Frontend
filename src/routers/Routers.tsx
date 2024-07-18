@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './Layout';
 import Login from '../pages/Login/Login';
 import Main from '../pages/Main/Main';
+import RecruitBand from '../pages/RecruitBand/RecruitBand';
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Login /> },
       { path: '/main', element: <Main /> },
+      { path: '/recruitband', element: <RecruitBand /> },
     ],
   },
 ]);

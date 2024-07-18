@@ -1,4 +1,12 @@
 import styled from 'styled-components';
+//전체 컨테이너
+export const GlobalWrapper = styled.div`
+  width: 100%;
+`;
+
+export const GlobalContainer = styled.div`
+  margin: 2rem 10%;
+`;
 
 //텍스트
 export const TitleText = styled.h1`
@@ -42,11 +50,15 @@ export const EditText = styled.p`
 //인풋 스타일
 export const ShortInput = styled.input`
   width: 100%;
-  height: 1vh;
+  height: 5vh;
+  border: 1px solid #ff7417;
+  border-radius: 10px;
 `;
 export const MultiInput = styled.input`
   width: 100%;
   height: 10vh;
+  border: 1px solid #ff7417;
+  border-radius: 10px;
 `;
 
 //버튼 스타일

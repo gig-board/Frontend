@@ -17,22 +17,25 @@ export const MapContainer = styled.div`
 
 function KakaoMap() {
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=40845df7f07ad894386db842b037579d&autoload=false`;
-    script.async = true;
-    document.head.appendChild(script);
-
-    script.onload = () => {
-      window.kakao.maps.load(() => {
-        const container = document.getElementById('map');
+    window.kakao.maps.load(() => {
+      const container = document.getElementById('map');
+      if (container) {
         const options = {
-          center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-          level: 3,
+          center: new window.kakao.maps.LatLng(37.49671009920956, 126.95356743986663),
+          level: 4,
         };
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const map = new window.kakao.maps.Map(container, options);
-      });
-    };
+        const addMarker = () => {
+          const markerPosition = new window.kakao.maps.LatLng(37.49671009920956, 126.95356743986663);
+          const marker = new window.kakao.maps.Marker({
+            position: markerPosition,
+          });
+          marker.setMap(map); // 여기서 map을 사용하여 마커를 지도에 추가합니다.
+        };
+
+        addMarker();
+      }
+    });
   }, []);
 
   return <MapContainer id="map"></MapContainer>;

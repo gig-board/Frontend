@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import useToggleTabs from '../../hooks/useToggleTabs';
 
 const TapContainer = styled.div`
   background-color: #ff7417;
@@ -30,25 +31,21 @@ const OrderButton = styled.button<OrderButtonProps>`
 `;
 
 const ClassifyTap = () => {
-  const [activeButton, setActiveButton] = React.useState('최신순');
+  const [activeTab, handleToggleTab] = useToggleTabs();
 
-  const FilterChange = async (newFilter: number, buttonLabel: string) => {
-    setActiveButton(buttonLabel);
-    try {
-      //api호출
-    } catch (error) {
-      console.error('프로젝트 데이터 가져오기 실패:', error);
-    }
+  const FilterChange = (index: string) => {
+    handleToggleTab(index);
   };
+
   return (
     <TapContainer>
-      <OrderButton active={activeButton === '최신순'} onClick={() => FilterChange(0, '최신순')}>
+      <OrderButton active={activeTab === 'Tab1'} onClick={() => FilterChange('Tab1')}>
         최신순
       </OrderButton>
-      <OrderButton active={activeButton === '인기순'} onClick={() => FilterChange(1, '인기순')}>
+      <OrderButton active={activeTab === 'Tab2'} onClick={() => FilterChange('Tab2')}>
         인기순
       </OrderButton>
-      <OrderButton active={activeButton === '좋아요'} onClick={() => FilterChange(2, '좋아요')}>
+      <OrderButton active={activeTab === 'Tab3'} onClick={() => FilterChange('Tab3')}>
         좋아요
       </OrderButton>
     </TapContainer>

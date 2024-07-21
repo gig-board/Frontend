@@ -81,3 +81,16 @@ export const PictureOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
 `;
+export const ModalOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

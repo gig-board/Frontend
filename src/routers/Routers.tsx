@@ -6,6 +6,9 @@ import Main from '../pages/Main/Main';
 import RecruitBand from '../pages/RecruitBand/RecruitBand';
 import BandPromotion from '../pages/BandPromotion/BandPromotion';
 import SearchPlace from '../pages/Place/SearchPlace';
+import CreatePromotion from '../pages/BandPromotion/CreatePromotion';
+import CreateRecruit from '../pages/RecruitBand/CreateRecruit';
+import KakaoAuth from '../pages/Login/KakaoAuth';
 
 const router = createBrowserRouter([
   {
@@ -13,9 +16,12 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: '/', element: <Login /> },
+      { path: '/api/kakao/callback', element: <KakaoAuth /> },
       { path: '/main', element: <Main /> },
       { path: '/recruitband', element: <RecruitBand /> },
+      { path: '/createrecruit', element: <CreateRecruit /> },
       { path: '/bandpromotion', element: <BandPromotion /> },
+      { path: '/createpromotion', element: <CreatePromotion /> },
       { path: '/map', element: <SearchPlace /> },
     ],
   },

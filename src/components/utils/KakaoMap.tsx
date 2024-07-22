@@ -13,9 +13,13 @@ export const MapContainer = styled.div`
   height: 100%;
   border: none;
   border-radius: 10px;
+  position: relative;
 `;
+interface KakaoMapProps {
+  children?: React.ReactNode; // 자식 요소를 받을 수 있도록 설정
+}
 
-function KakaoMap() {
+function KakaoMap({ children }: KakaoMapProps) {
   useEffect(() => {
     window.kakao.maps.load(() => {
       const container = document.getElementById('map');
@@ -38,7 +42,7 @@ function KakaoMap() {
     });
   }, []);
 
-  return <MapContainer id="map"></MapContainer>;
+  return <MapContainer id="map">{children}</MapContainer>;
 }
 
 export default KakaoMap;

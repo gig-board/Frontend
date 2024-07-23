@@ -28,3 +28,33 @@ export const PromotionWrapper = styled.div`
   margin-top: 2vw;
   cursor: pointer;
 `;
+export const BasicInputContainer = styled.div`
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2vw;
+`;
+export const InputContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+export const InputWrapper = styled.div`
+  margin: 2% 20%;
+`;
+export const ImgInputContainer = styled.div`
+  width: 60vw;
+  height: 40vh;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

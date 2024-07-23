@@ -4,13 +4,16 @@ import { AllRecruitContainer, FloatContainer, TopRankContainer } from './Recruit
 import TopRankRecruit from '../../components/band/recruit/TopRankRecruit';
 import AllRecruit from '../../components/band/recruit/AllRecruit';
 import ClassifyTap from '../../components/utils/ClassifyTap';
+import { Link } from 'react-router-dom';
 
 export default function RecruitBand() {
   return (
     <GlobalWrapper>
       <GlobalContainer>
         <FloatContainer>
-          <DetailText className="text-[#ff7417] cursor-pointer">나의 밴드 등록하기</DetailText>
+          <Link to="/createrecruit">
+            <DetailText className="text-[#ff7417] cursor-pointer">나의 밴드 등록하기</DetailText>
+          </Link>
           <span className="w-[18vw]">
             <ShortInput></ShortInput>
           </span>

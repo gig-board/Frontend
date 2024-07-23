@@ -53,12 +53,46 @@ export const ShortInput = styled.input`
   height: 5vh;
   border: 1px solid #ff7417;
   border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  caret-color: #ff7417;
+  &:focus {
+    border: 1.2px solid #ff9045;
+    outline: none;
+  }
+  &::selection {
+    background: #ffc7a2;
+  }
 `;
-export const MultiInput = styled.input`
+export const MultiInput = styled.textarea`
   width: 100%;
-  height: 10vh;
+  height: 20vh;
   border: 1px solid #ff7417;
   border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  caret-color: #ff7417;
+  &:focus {
+    border: 1.2px solid #ff9045;
+    outline: none;
+  }
+  &::selection {
+    background: #ffc7a2;
+  }
+`;
+export const HiddenInput = styled.input`
+  display: none;
+`;
+export const BandImgContainer = styled.img`
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ff7417;
+  border-radius: 8px;
+  position: relative;
+  object-fit: cover;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 `;
 
 //버튼 스타일
@@ -67,7 +101,9 @@ export const SubmmitButton = styled.button`
   border-radius: 10px;
   background-color: #ff9045;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 0.5rem 1rem;
+  font-size: 18px;
+  font-weight: 600;
 `;
 
 //오버레이 스타일

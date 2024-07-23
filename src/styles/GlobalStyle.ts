@@ -96,14 +96,18 @@ export const BandImgContainer = styled.img`
 `;
 
 //버튼 스타일
-export const SubmmitButton = styled.button`
+export const SubmitButton = styled.button`
   border: none;
-  border-radius: 10px;
+  border-radius: 6px;
   background-color: #ff9045;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 600;
+  transition: 0.3s;
+  &:hover {
+    background-color: #ff7417;
+  }
 `;
 
 //오버레이 스타일

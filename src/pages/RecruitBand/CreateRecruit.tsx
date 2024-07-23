@@ -10,7 +10,7 @@ import {
   PlainText,
   ShortInput,
   SmallText,
-  SubmmitButton,
+  SubmitButton,
 } from '../../styles/GlobalStyle';
 import {
   BasicInputContainer,
@@ -74,7 +74,7 @@ function CreateRecruit() {
             <MultiInput />
           </InputContainer>
           <span className="w-full flex justify-end">
-            <SubmmitButton className="mt-5">제출하기</SubmmitButton>
+            <SubmitButton className="mt-5">제출하기</SubmitButton>
           </span>
         </InputWrapper>
       </GlobalContainer>

@@ -55,7 +55,7 @@ abbr[title] {
   border-radius: 6px;
 }
 .react-calendar__tile--now {
-  background: #eb864833;
+  background: #f8f8fa;
   border-radius: 6px;
   font-weight: bold;
   color: #ff7417;

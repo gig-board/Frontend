@@ -16,17 +16,14 @@ function App() {
   return (
     <>
       {Array.isArray(date) ? (
-        <p className="display: flex justify-around">
+        <p className="flex justify-around">
           <span className="bold">시작일 : {date[0].toDateString()}</span>
           <span className="bold">종료일 : {date[1].toDateString()}</span>
         </p>
-      ) : date ? (
-        <p className="text-center">
-          <span className="bold">Default selected date:</span> {date.toDateString()}
-        </p>
       ) : (
-        <p className="text-center">
-          <span className="bold">No date selected</span>
+        <p className="flex justify-around">
+          <span className="bold">시작일 : </span>
+          <span className="bold">종료일 : </span>
         </p>
       )}
       <div className="calendar-container">

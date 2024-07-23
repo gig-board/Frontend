@@ -9,6 +9,7 @@ import SearchPlace from '../pages/Place/SearchPlace';
 import CreatePromotion from '../pages/BandPromotion/CreatePromotion';
 import CreateRecruit from '../pages/RecruitBand/CreateRecruit';
 import KakaoAuth from '../pages/Login/KakaoAuth';
+import ApplyRecruit from '../pages/RecruitBand/ApplyRecruit';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: '/api/kakao/callback', element: <KakaoAuth /> },
       { path: '/main', element: <Main /> },
       { path: '/recruitband', element: <RecruitBand /> },
+      { path: '/applyrecruit/:recruitId', element: <ApplyRecruit /> },
       { path: '/createrecruit', element: <CreateRecruit /> },
       { path: '/bandpromotion', element: <BandPromotion /> },
       { path: '/createpromotion', element: <CreatePromotion /> },

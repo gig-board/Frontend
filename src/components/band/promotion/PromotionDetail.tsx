@@ -52,14 +52,18 @@ const PictureOverlay = styled.div`
   gap: 1rem;
 `;
 const PaginationWrapper = styled.div`
+  margin-top: 1rem;
+
   .swiper-pagination {
-    position: absolute;
-    bottom: 18%;
+    position: relative;
+    width: auto;
   }
+
   .swiper-pagination-bullet {
     background: rgba(255, 255, 255, 0.8);
     opacity: 1;
   }
+
   .swiper-pagination-bullet-active {
     background: #ff7417;
   }
@@ -72,7 +76,7 @@ const PromotionDetail: React.FC<PromotionDetailProps> = ({ onClose }) => {
   return (
     <>
       (
-      <ModalOverlay onClick={onClose}>
+      <ModalOverlay onClick={onClose} className="flex-col items-center justify-center">
         <Swiper
           modules={[Pagination, Navigation, Keyboard, Mousewheel]}
           speed={700}

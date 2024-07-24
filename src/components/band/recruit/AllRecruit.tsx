@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 
 import sample from '../../../assets/sampleimage.png';
 import { PlainText, SmallText } from '../../../styles/GlobalStyle';
+import { useNavigate } from 'react-router-dom';
 
 const AllContainer = styled.div`
   display: flex;
@@ -22,9 +23,13 @@ const ImgContainer = styled.div<{ backgroundImageUrl: string }>`
 `;
 
 export default function AllRecruit() {
+  const navigate = useNavigate();
+  const LinkDetail = (id: number) => {
+    navigate(`/detailrecruit/${id}`);
+  };
   return (
     <>
-      <AllContainer>
+      <AllContainer onClick={() => LinkDetail(1)}>
         <ImgContainer backgroundImageUrl={sample}></ImgContainer>
         <PlainText>실리카겔 모집</PlainText>
         <SmallText>날짜</SmallText>

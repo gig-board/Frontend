@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 
 import sample from '../../../assets/sampleimage.png';
 import { PlainText, SmallText } from '../../../styles/GlobalStyle';
+import { useNavigate } from 'react-router-dom';
 
 const TopRankContainer = styled.div`
   display: flex;
@@ -47,8 +48,12 @@ const RecruitImgContainer = styled.div<{ backgroundImageUrl: string }>`
 `;
 
 export default function TopRankRecruit() {
+  const navigate = useNavigate();
+  const LinkDetail = (id: number) => {
+    navigate(`/detailrecruit/${id}`);
+  };
   return (
-    <TopRankContainer>
+    <TopRankContainer onClick={() => LinkDetail(1)}>
       <ImgContainer backgroundImageUrl={sample}>
         <ImgOverlay>
           <RecruitImgContainer backgroundImageUrl={sample}></RecruitImgContainer>

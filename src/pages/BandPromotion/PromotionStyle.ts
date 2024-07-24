@@ -12,6 +12,7 @@ export const TapContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 1vw;
+  justify-content: space-between;
 `;
 export const TapText = styled(PlainText)<{ active: boolean }>`
   display: flex;
@@ -57,4 +58,20 @@ export const ImgInputContainer = styled.div`
 export const IconContainer = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const PromotionImgInput = styled.div`
+  width: 50vw;
+  height: 55vh;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const MapContainer = styled.div`
+  width: 100%;
+  height: 50vh;
+  border: 1px solid #ff7417;
+  border-radius: 10px;
 `;

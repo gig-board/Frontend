@@ -14,9 +14,8 @@ export default function KakaoAuth() {
           console.log(response.data);
 
           const ACCESS_TOKEN = response.data.accessToken;
-          const REFRESH_TOKEN = response.data.refreshToken;
           localStorage.setItem('accessToken', ACCESS_TOKEN);
-          localStorage.setItem('refreshToken', REFRESH_TOKEN);
+
           navigate('/main');
         } catch (error) {
           console.error('카카오 로그인 실패', error);

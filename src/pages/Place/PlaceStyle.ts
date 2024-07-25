@@ -36,6 +36,7 @@ export const AddPlaceWrpper = styled.div<{ open: boolean }>`
   z-index: 10;
   transition: left 0.3s ease;
   padding: 2rem 1rem;
+  pointer-events: auto;
 `;
 
 export const TitleText = styled(DetailText)`

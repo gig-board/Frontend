@@ -72,8 +72,8 @@ const CheckBoxTile = styled.span`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 6rem;
-  min-height: 6rem;
+  width: 5.5rem;
+  min-height: 5.5rem;
   border-radius: 0.5rem;
   border: 2px solid #e0e0e0;
   background-color: #fff;

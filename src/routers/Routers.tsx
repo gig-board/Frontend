@@ -11,6 +11,8 @@ import CreateRecruit from '../pages/RecruitBand/CreateRecruit';
 import KakaoAuth from '../pages/Login/KakaoAuth';
 import ApplyRecruit from '../pages/RecruitBand/ApplyRecruit';
 import DetailRecruit from '../pages/RecruitBand/DetailRecruit';
+import CreateClub from '../pages/Club/CreateClub';
+import ClubBoard from '../pages/Club/ClubBoard';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,8 @@ const router = createBrowserRouter([
       { path: '/createrecruit', element: <CreateRecruit /> },
       { path: '/bandpromotion', element: <BandPromotion /> },
       { path: '/createpromotion', element: <CreatePromotion /> },
+      { path: '/createclub', element: <CreateClub /> },
+      { path: '/createclub/:clubId', element: <ClubBoard /> },
       { path: '/map', element: <SearchPlace /> },
     ],
   },

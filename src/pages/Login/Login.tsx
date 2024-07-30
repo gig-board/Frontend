@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import { KAKAO_AUTH_URL } from '../../const/LoginApi';
 
 const LoginWrapper = styled.div`
   width: 100%;
@@ -85,6 +86,9 @@ const LoginButton = styled.button`
 `;
 
 function Login() {
+  const handleKakaoLogin = () => {
+    window.location.href = KAKAO_AUTH_URL;
+  };
   return (
     <div className="bg-black m-0 p-0 overflow-hidden">
       <LoginWrapper>
@@ -106,7 +110,7 @@ function Login() {
           <IntroText>
             GIGBOARD는 여러분을<br></br> 기다리고 있습니다.
           </IntroText>
-          <LoginButton>카카오톡으로 시작하기</LoginButton>
+          <LoginButton onClick={handleKakaoLogin}>카카오톡으로 시작하기</LoginButton>
         </IntroContainer>
       </LoginWrapper>
     </div>

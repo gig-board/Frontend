@@ -1,7 +1,7 @@
 /* pipeline 변수 설정 */
 def DOCKER_IMAGE_NAME = "potatoj1n/gigboard-fe"            // 도커 이미지 이름
 def DOCKER_IMAGE_TAGS = "latest"                           // 도커 이미지 태그
-def NAMESPACE = "default"                                  // 쿠버네티스 네임스페이스
+def NAMESPACE = "frontend"                                  // 쿠버네티스 네임스페이스
 def VERSION = "${env.BUILD_NUMBER}"                        // 빌드 버전
 def DATE = new Date()                                      // 현재 날짜
 
@@ -72,9 +72,9 @@ pipeline {
                         
                         // 배포 파일 수정
                         sh "echo ${VERSION}"
-                        sh "sed -i.bak 's#VERSION_STRING#${VERSION}#' ./k8s/k8s-deployment.yaml"
+                        sh "sed -i.bak 's#VERSION_STRING#${VERSION}#' ./k8s/deployment.yaml"
                         sh "echo ${DATE}"
-                        sh "sed -i.bak 's#DATE_STRING#${DATE}#' ./k8s/k8s-deployment.yaml"
+                        sh "sed -i.bak 's#DATE_STRING#${DATE}#' ./k8s/deployment.yaml"
 
                         // 배포 수행
                         sh "kubectl apply -f ./k8s/deployment.yaml -n ${NAMESPACE}"

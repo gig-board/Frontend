@@ -7,7 +7,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch 'main', url: 'https://github.com/gig-board/Frontend.git', credentialsId:'eunjin_github_id'
+                git branch: 'main', url: 'https://github.com/gig-board/Frontend.git', credentialsId:'eunjin_github_id'
             }
         }
         

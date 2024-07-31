@@ -96,3 +96,41 @@ export const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
     opacity: 1;
   }
 `;
+
+export const ClubWrapper = styled.div`
+  margin: 2rem;
+  display: flex;
+`;
+export const AddMemberContainer = styled.div`
+  width: 25%;
+  background-color: #ff9045;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  border-radius: 8px;
+  height: 82vh;
+`;
+export const MemberContainer = styled.div`
+  margin-left: 1em;
+  width: 68%;
+  height: 35vh;
+  border: 1px solid #ff7417;
+  border-radius: 8px;
+  padding: 1em;
+`;
+
+export const AddButton = styled.div`
+  width: max-content;
+  border: none;
+  border-radius: 6px;
+  background-color: black;
+  color: #ff9045;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.3s;
+  &:hover {
+    color: #ff7417;
+  }
+`;

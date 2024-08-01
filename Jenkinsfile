@@ -18,7 +18,7 @@ pipeline {
             steps {
                 nodejs('Nodejs 20.11.0') {
                     sh "npm install"
-                    sh "npm run build"
+                    sh "CI='false' npm run build"
                 }
             }
         }

@@ -1,20 +1,41 @@
+/* pipeline 변수 설정 */
+def DOCKER_IMAGE_NAME = "potatoj1n/gigboard-fe"            // 도커 이미지 이름
+def DOCKER_IMAGE_TAGS = "latest"                           // 도커 이미지 태그
+def VERSION = "${env.BUILD_NUMBER}"                        // 빌드 버전
+def DATE = new Date()                                      // 현재 날짜
+
+
 pipeline {
-    agent any
+   agent {
+        docker {
+            image ${DOCKER_IMAGE_NAME}
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     stages {
-        stage('build') {
+
+        stage('Checkout') {
             steps {
-                echo 'building the application...'
+                git branch: 'main', url: 'https://github.com/gig-board/Frontend.git', credentialsId:'eunjin_github_id'
             }
         }
-        stage('test') {
+        
+        stage('Build') {
             steps {
-                echo 'testing the application...'
+                sh "npm install"
+                sh "npm run build"
             }
         }
-        stage('deploy') {
+        
+        stage('Docker Build') {
             steps {
-                echo 'deploying the application...'
+                withCredentials([usernamePassword(credentialsId: 'docker_hub_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS} ."
+                    sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                    sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS}"
+                }
             }
         }
+        
     }
 }

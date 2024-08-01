@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                nodejs('Nodejs 20.11.0') {
+                nodejs('Nodejs 20.x') {
                     sh "npm install"
                     sh "npm run build"
                 }
@@ -26,7 +26,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker_hub_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS} ."
+                    sh "docker build --memory=4g -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS} ."
                     sh "docker login -u ${USERNAME} -p ${PASSWORD}"
                     sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS}"
                 }

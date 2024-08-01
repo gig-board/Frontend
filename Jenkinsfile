@@ -6,12 +6,7 @@ def DATE = new Date()                                      // 현재 날짜
 
 
 pipeline {
-   agent {
-        docker {
-            image ${DOCKER_IMAGE_NAME}
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+   agent any;
     stages {
 
         stage('Checkout') {

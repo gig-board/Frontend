@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                nodejs('NodeJS 17.4.0') {
+                nodejs('Nodejs 20.11.0') {
                     sh "npm install"
                     sh "npm run build"
                 }

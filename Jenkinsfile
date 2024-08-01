@@ -10,7 +10,6 @@ pipeline {
     stages {
 
         stage('Checkout') {
-          
             steps {
                 git branch: 'main', url: 'https://github.com/gig-board/Frontend.git', credentialsId:'eunjin_github_id'
             }
@@ -18,22 +17,17 @@ pipeline {
         
         stage('Build') {
             steps {
-                container('node') {
-                    sh "npm install"
-                    sh "npm run build"
-                }
+                sh "npm install"
+                sh "npm run build"
             }
         }
         
-        
         stage('Docker Build') {
             steps {
-                container('docker') {
-                    withCredentials([usernamePassword(credentialsId: 'docker_hub_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS} ."
-                        sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                        sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS}"
-                    }
+                withCredentials([usernamePassword(credentialsId: 'docker_hub_token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS} ."
+                    sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                    sh "docker push ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAGS}"
                 }
             }
         }

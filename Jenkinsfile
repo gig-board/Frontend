@@ -14,14 +14,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/gig-board/Frontend.git', credentialsId:'eunjin_github_id'
             }
         }
-        stage('Build') {
-            steps {
-                nodejs('Nodejs 20.11.0') {
-                    sh "npm install"
-                    sh "CI='false' npm run build"
-                }
-            }
-        }
+     
         
         stage('Docker Build') {
             steps {

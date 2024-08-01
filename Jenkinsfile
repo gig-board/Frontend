@@ -6,7 +6,12 @@ def DATE = new Date()                                      // 현재 날짜
 
 
 pipeline {
-   agent any;
+     agent {
+        docker {
+            image 'node:21' // Node.js 21이 포함된 Docker 이미지
+            args '-u root:root' // npm global install 등을 위해 root 권한 사용
+        }
+    }
     stages {
 
         stage('Checkout') {

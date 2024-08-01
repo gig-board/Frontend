@@ -6,17 +6,20 @@ def DATE = new Date()                                      // 현재 날짜
 
 
 pipeline {
-     agent {
-        docker {
-            image 'node:21' // Node.js 21이 포함된 Docker 이미지
-            args '-u root:root' // npm global install 등을 위해 root 권한 사용
-        }
-    }
+     agent any
     stages {
 
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/gig-board/Frontend.git', credentialsId:'eunjin_github_id'
+            }
+        }
+          stage('Install Node.js') {
+            steps {
+                sh '''
+                    curl -fsSL https://deb.nodesource.com/setup_21.x | bash -
+                    apt-get install -y nodejs
+                '''
             }
         }
         

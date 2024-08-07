@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: demo-nginx-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: frontend
+      app: demo-nginx-app
   template:
     metadata:
       labels:
-        app: frontend
+        app: demo-nginx-app
     spec:
       containers:
-        - name: frontend
-          image: potatoj1n/gigboard-fe
+        - name: demo-nginx-app
+          image: gigboard/demo-eks-cicd:latest
           ports:
             - containerPort: 80
           volumeMounts:

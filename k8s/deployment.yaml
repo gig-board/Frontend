@@ -1,36 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-nginx-app
+  name: frontend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: demo-nginx-app
+      app: frontend
   template:
     metadata:
       labels:
-        app: demo-nginx-app
+        app: frontend
     spec:
       containers:
-        - name: demo-nginx-app
-          image: gigboard/demo-eks-cicd:latest
+        - name: frontend
+          image: potatoj1n/gigboard-fe:latest
           ports:
             - containerPort: 80
-          volumeMounts:
-            - name: nginx-config-volume
-              mountPath: /etc/nginx/conf.d/default.conf
-              subPath: default.conf
-            - name: nginx-main-config
-              mountPath: /etc/nginx/conf.d/nginx.conf
-              subPath: nginx.conf
-      volumes:
-        - name: nginx-config-volume
-          configMap:
-            name: nginx-config
-        - name: nginx-main-config
-          configMap:
-            name: nginx-config
-            items:
-              - key: nginx.conf
-                path: nginx.conf
+              name: frontend

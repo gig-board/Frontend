@@ -1,19 +1,29 @@
-# Use the official image as a parent image.
+# Node.js를 사용하여 애플리케이션을 빌드하는 단계
 FROM node:lts as build
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the file from your host to your current location.
 COPY package.json .
 
-# Run the command inside your image filesystem
-RUN npm install
+RUN npm i
 
-# Inform Docker that the container is listening on the specified port at runtime
-EXPOSE 3000
+COPY . .
 
-# Run the specified command within the container.
-CMD ["npm", "start"]
+RUN npm run build
 
-# Copy the rest of your app's source code from your host to your image filesystem.
+# Nginx를 사용하여 빌드된 애플리케이션을 서빙하는 단계
+FROM nginx:stable-alpine
+
+# 기본 Nginx 설정을 삭제합니다.
+RUN rm -rf /etc/nginx/conf.d
+
+# 새로운 Nginx 설정을 복사합니다.
+COPY conf/nginx.conf /etc/nginx/nginx.conf
+
+# 빌드된 애플리케이션을 Nginx의 기본 웹 디렉토리로 복사합니다.
+COPY --from=build /app/build /usr/share/nginx/html
+
+EXPOSE 80
+
+# Nginx를 실행합니다.
+CMD [ "nginx", "-g", "daemon off;" ]

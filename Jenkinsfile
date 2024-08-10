@@ -19,29 +19,33 @@ pipeline {
 
     stage('Docker Image Build') {
       steps {
-        sh "docker build . -t ${dockerHubRegistry}:${currentBuild.number}"
-        sh "docker build . -t ${dockerHubRegistry}:latest"
+        script {
+          def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
+          sh "docker build . -t ${imageTag}"
+          sh "docker build . -t ${dockerHubRegistry}:latest"
+        }
       }
     }
 
     stage('Docker Image Push') {
       steps {
         withDockerRegistry([url: "https://index.docker.io/v1/", credentialsId: dockerHubRegistryCredential]) {
-          sh "docker push ${dockerHubRegistry}:${currentBuild.number}"
-          sh "docker push ${dockerHubRegistry}:latest"
+          script {
+            def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
+            sh "docker push ${imageTag}"
+            sh "docker push ${dockerHubRegistry}:latest"
+          }
         }
       }
     }
 
     stage('Deploy to Kubernetes') {
       steps {
-        // Deployment YAML을 수정하여 최신 이미지를 사용
-        sh """
-          sed -i 's|image: .*$|image: ${dockerHubRegistry}:${currentBuild.number}|' deployment.yaml
-        """
-        
-        // 수정된 deployment.yaml 파일을 Kubernetes에 적용
-        sh "kubectl apply -f deployment.yaml --namespace=${namespace}"
+        script {
+          def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
+          sh "sed -i 's|image: .*$|image: ${imageTag}|' deployment.yaml"
+          sh "kubectl apply -f deployment.yaml --namespace=${namespace}"
+        }
       }
     }
   }

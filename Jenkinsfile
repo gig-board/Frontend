@@ -1,5 +1,9 @@
 pipeline {
-  agent any
+  agent {
+    kubernetes {
+      yamlFile 'kaniko-builder.yaml'
+    }
+  }
 
   environment {
     dockerHubRegistry = 'potatoj1n/gigboard-fe'
@@ -8,6 +12,8 @@ pipeline {
     githubCredential = 'credential-github'
     gitEmail = 'appabomul@gmail.com'
     gitName = 'potatoj1n'
+    argocdServer = 'http://localhost:4000' // Argo CD 서버 주소
+    argocdAppName = 'gigboard-fe' // Argo CD 애플리케이션 이름
   }
 
   stages {
@@ -17,23 +23,18 @@ pipeline {
       }
     }
 
-    stage('Kaniko Image Build and Push') {
+   stage('Build & Push with Kaniko') {
       steps {
-        script {
+        container(name: 'kaniko', shell: '/busybox/sh') {
           def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
-          sh """
-            docker run --rm \
-              -v ${pwd}/workspace:/workspace \
-              -v ${HOME}/.docker/config.json:/kaniko/.docker/config.json \
-              gcr.io/kaniko-project/executor:latest \
-              --context=/workspace \
-              --dockerfile=/workspace/Dockerfile \
-              --destination=${dockerHubRegistry}:${currentBuild.number} \
-              --destination=${dockerHubRegistry}:latest
-          """
+          sh '''#!/busybox/sh
+
+            /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=${imageTag} --destination=${imageTag}:latest
+          '''
         }
       }
     }
+    
 
     stage('Deploy to Kubernetes') {
       steps {
@@ -45,5 +46,15 @@ pipeline {
         }
       }
     }
+
+    // stage('Sync with Argo CD') {
+    //   steps {
+    //     script {
+    //       sh """
+    //         argocd --server ${argocdServer} --auth-token ${argocdAuthToken} app sync ${argocdAppName}
+    //       """
+    //     }
+    //   }
+    // }
   }
 }

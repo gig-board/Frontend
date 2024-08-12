@@ -26,10 +26,9 @@ pipeline {
    stage('Build & Push with Kaniko') {
       steps {
         container(name: 'kaniko', shell: '/busybox/sh') {
-          def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
           sh '''#!/busybox/sh
 
-            /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=${imageTag} --destination=${imageTag}:latest
+            /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=${dockerHubRegistry} --destination=${dockerHubRegistry}:latest
           '''
         }
       }

@@ -24,7 +24,7 @@ pipeline {
           sh """
             docker run --rm \
               -v ${pwd}/workspace:/workspace \
-              -v ~/.docker/config.json:/kaniko/.docker/config.json \
+              -v ${HOME}/.docker/config.json:/kaniko/.docker/config.json \
               gcr.io/kaniko-project/executor:latest \
               --context=/workspace \
               --dockerfile=/workspace/Dockerfile \

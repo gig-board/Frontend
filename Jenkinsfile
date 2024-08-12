@@ -1,9 +1,5 @@
 pipeline {
-  agent {
-    kubernetes {
-      yamlFile 'kaniko-builder.yaml'
-    }
-  }
+  agent any
 
   environment {
     dockerHubRegistry = 'potatoj1n/gigboard-fe'
@@ -12,8 +8,6 @@ pipeline {
     githubCredential = 'credential-github'
     gitEmail = 'appabomul@gmail.com'
     gitName = 'potatoj1n'
-    argocdServer = 'http://localhost:4000' // Argo CD 서버 주소
-    argocdAppName = 'gigboard-fe' // Argo CD 애플리케이션 이름
   }
 
   stages {
@@ -23,37 +17,38 @@ pipeline {
       }
     }
 
-   stage('Build & Push with Kaniko') {
+    stage('Docker Image Build') {
       steps {
-        container(name: 'kaniko', shell: '/busybox/sh') {
-          sh '''#!/busybox/sh
-
-            /kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --destination=${dockerHubRegistry} --destination=${dockerHubRegistry}:latest
-          '''
+        script {
+          def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
+          sh "docker build . -t ${imageTag}"
+          sh "docker build . -t ${dockerHubRegistry}:latest"
         }
       }
     }
-    
+
+    stage('Docker Image Push') {
+      steps {
+        withDockerRegistry([url: "https://index.docker.io/v1/", credentialsId: dockerHubRegistryCredential]) {
+          script {
+            def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
+            sh "docker push ${imageTag}"
+            sh "docker push ${dockerHubRegistry}:latest"
+          }
+        }
+      }
+    }
 
     stage('Deploy to Kubernetes') {
       steps {
         script {
           def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
+          // Alternative way to handle the sed command
           def sedCommand = "sed -i 's|image: .*|image: ${imageTag}|' deployment.yaml"
           sh sedCommand
           sh "kubectl apply -f deployment.yaml --namespace=${namespace}"
         }
       }
     }
-
-    // stage('Sync with Argo CD') {
-    //   steps {
-    //     script {
-    //       sh """
-    //         argocd --server ${argocdServer} --auth-token ${argocdAuthToken} app sync ${argocdAppName}
-    //       """
-    //     }
-    //   }
-    // }
   }
 }

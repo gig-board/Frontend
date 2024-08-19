@@ -7,8 +7,10 @@ pipeline {
     githubCredential = 'credential-github'
     gitEmail = 'appabomul@gmail.com'
     gitName = 'potatoj1n'
-    argoCDServer = 'http://172.18.0.3:32025' // Argo CD 서버 주소
+    argoCDServer = '172.18.0.3:32025' // Argo CD 서버 주소
     argoCDAppName = 'gigboard-fe'
+    argoCDUsername = 'admin' // Argo CD 사용자명
+    argoCDPassword = 'GcjwYiWK3yYPz6iQ' // Argo CD 비밀번호
   }
 
   stages {
@@ -23,7 +25,6 @@ pipeline {
         script {
           def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
           sh "docker build . -t ${imageTag}"
-          sh "docker build . -t ${dockerHubRegistry}:latest"
         }
       }
     }
@@ -33,12 +34,21 @@ pipeline {
         withDockerRegistry([url: "https://index.docker.io/v1/", credentialsId: dockerHubRegistryCredential]) {
           script {
             def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
-            sh "docker push ${dockerHubRegistry}:latest"
+            sh "docker push ${imageTag}"
           }
         }
       }
     }
-     stage('Deploy to Argo CD') {
+    
+    stage('Login to Argo CD') {
+      steps {
+        script {
+          sh "argocd login ${argoCDServer} --username ${argoCDUsername} --password ${argoCDPassword} --insecure"
+        }
+      }
+    }
+
+    stage('Sync Argo CD Application') {
       steps {
         script {
           sh "argocd app sync ${argoCDAppName} --server ${argoCDServer} --insecure"

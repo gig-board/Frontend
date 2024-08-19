@@ -7,6 +7,8 @@ pipeline {
     githubCredential = 'credential-github'
     gitEmail = 'appabomul@gmail.com'
     gitName = 'potatoj1n'
+    argoCDServer = 'http://172.18.0.3:32025' // Argo CD 서버 주소
+    argoCDAppName = 'gigboard-fe'
   }
 
   stages {
@@ -33,6 +35,16 @@ pipeline {
             def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
             sh "docker push ${dockerHubRegistry}:latest"
           }
+        }
+      }
+    }
+     stage('Deploy to Argo CD') {
+      steps {
+        script {
+          // Update Argo CD app with new image
+          sh "argocd app set ${argoCDAppName} --image ${dockerHubRegistry}:${currentBuild.number} --server ${argoCDServer} --insecure"
+          // Sync the app to apply changes
+          sh "argocd app sync ${argoCDAppName} --server ${argoCDServer} --insecure"
         }
       }
     }

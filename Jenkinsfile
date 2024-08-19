@@ -4,11 +4,9 @@ pipeline {
   environment {
     dockerHubRegistry = 'potatoj1n/gigboard-fe'
     dockerHubRegistryCredential = 'credential-dockerhub'
-    namespace = 'frontend'
     githubCredential = 'credential-github'
     gitEmail = 'appabomul@gmail.com'
     gitName = 'potatoj1n'
-    kubectlPath = '/usr/local/bin/kubectl' 
   }
 
   stages {
@@ -33,21 +31,8 @@ pipeline {
         withDockerRegistry([url: "https://index.docker.io/v1/", credentialsId: dockerHubRegistryCredential]) {
           script {
             def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
-            sh "docker push ${imageTag}"
             sh "docker push ${dockerHubRegistry}:latest"
           }
-        }
-      }
-    }
-
-    stage('Deploy to Kubernetes') {
-      steps {
-        script {
-          def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
-          // Alternative way to handle the sed command
-          def sedCommand = "sed -i 's|image: .*|image: ${imageTag}|' k8s/deployment.yaml"
-          sh sedCommand
-          sh "${kubectlPath} apply -f k8s/deployment.yaml --namespace=${namespace}"
         }
       }
     }

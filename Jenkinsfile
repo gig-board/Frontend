@@ -8,6 +8,7 @@ pipeline {
     githubCredential = 'credential-github'
     gitEmail = 'appabomul@gmail.com'
     gitName = 'potatoj1n'
+    kubectlPath = '/usr/local/bin/kubectl' 
   }
 
   stages {
@@ -46,7 +47,7 @@ pipeline {
           // Alternative way to handle the sed command
           def sedCommand = "sed -i 's|image: .*|image: ${imageTag}|' k8s/deployment.yaml"
           sh sedCommand
-          sh "kubectl apply -f k8s/deployment.yaml --namespace=${namespace}"
+          sh "${kubectlPath} apply -f k8s/deployment.yaml --namespace=${namespace}"
         }
       }
     }

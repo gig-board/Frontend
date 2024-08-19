@@ -23,7 +23,7 @@ pipeline {
     stage('Docker Image Build') {
       steps {
         script {
-          def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
+          def imageTag = "${dockerHubRegistry}:latest"
           sh "docker build . -t ${imageTag}"
         }
       }
@@ -33,7 +33,7 @@ pipeline {
       steps {
         withDockerRegistry([url: "https://index.docker.io/v1/", credentialsId: dockerHubRegistryCredential]) {
           script {
-            def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
+            def imageTag = "${dockerHubRegistry}:latest"
             sh "docker push ${imageTag}"
           }
         }

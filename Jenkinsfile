@@ -41,9 +41,6 @@ pipeline {
      stage('Deploy to Argo CD') {
       steps {
         script {
-          // Update Argo CD app with new image
-          sh "argocd app set ${argoCDAppName} --image ${dockerHubRegistry}:${currentBuild.number} --server ${argoCDServer} --insecure"
-          // Sync the app to apply changes
           sh "argocd app sync ${argoCDAppName} --server ${argoCDServer} --insecure"
         }
       }

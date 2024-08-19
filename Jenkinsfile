@@ -44,9 +44,9 @@ pipeline {
         script {
           def imageTag = "${dockerHubRegistry}:${currentBuild.number}"
           // Alternative way to handle the sed command
-          def sedCommand = "sed -i 's|image: .*|image: ${imageTag}|' deployment.yaml"
+          def sedCommand = "sed -i 's|image: .*|image: ${imageTag}|' k8s/deployment.yaml"
           sh sedCommand
-          sh "kubectl apply -f deployment.yaml --namespace=${namespace}"
+          sh "kubectl apply -f k8s/deployment.yaml --namespace=${namespace}"
         }
       }
     }

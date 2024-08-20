@@ -15,6 +15,7 @@ spec:
       containers:
         - name: frontend
           image: potatoj1n/gigboard-fe:${IMAGE_TAG}
+
           ports:
             - containerPort: 80
               name: frontend

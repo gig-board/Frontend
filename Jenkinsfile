@@ -11,6 +11,7 @@ pipeline {
     argoCDAppName = 'gigboard-fe'
     argoCDUsername = 'admin' // Argo CD 사용자명
     argoCDPassword = 'GcjwYiWK3yYPz6iQ' // Argo CD 비밀번호
+    newTag = "${env.BUILD_ID}" // Unique tag for each build
   }
 
   stages {
@@ -23,7 +24,7 @@ pipeline {
     stage('Docker Image Build') {
       steps {
         script {
-          def imageTag = "${dockerHubRegistry}:latest"
+          def imageTag = "${dockerHubRegistry}:${newTag}"
           sh "docker build . -t ${imageTag}"
         }
       }
@@ -33,12 +34,13 @@ pipeline {
       steps {
         withDockerRegistry([url: "https://index.docker.io/v1/", credentialsId: dockerHubRegistryCredential]) {
           script {
-            def imageTag = "${dockerHubRegistry}:latest"
+            def imageTag = "${dockerHubRegistry}:${newTag}"
             sh "docker push ${imageTag}"
           }
         }
       }
     }
+    
     
     stage('Login to Argo CD') {
       steps {

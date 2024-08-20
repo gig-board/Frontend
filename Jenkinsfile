@@ -40,8 +40,28 @@ pipeline {
         }
       }
     }
-    
-    
+
+    stage('Update Deployment File') {
+      steps {
+        script {
+          // Clone the Git repository containing the Kubernetes manifests
+          checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[credentialsId: githubCredential, url: 'https://github.com/gig-board/DeploymentRepo.git']]])
+
+          // Update the deployment file with the new image tag
+          def imageTag = "${dockerHubRegistry}:${newTag}"
+          sh """
+            echo "Updating image tag to ${imageTag}"
+            sed -i 's|${dockerHubRegistry}:latest|${imageTag}|g' k8s/deployment.yaml
+            git config user.email "${gitEmail}"
+            git config user.name "${gitName}"
+            git add k8s/deployment.yaml
+            git commit -m "Update image tag to ${newTag}"
+            git push origin main
+          """
+        }
+      }
+    }
+
     stage('Login to Argo CD') {
       steps {
         script {

@@ -7,7 +7,7 @@ pipeline {
     githubCredential = 'credential-github'
     gitEmail = 'appabomul@gmail.com'
     gitName = 'potatoj1n'
-    argoCDServer = '172.18.0.3:32025' // Argo CD 서버 주소
+    argoCDServer = '172.18.0.2:32025' // Argo CD 서버 주소
     argoCDAppName = 'gigboard-fe'
     argoCDUsername = 'admin' // Argo CD 사용자명
     argoCDPassword = 'GcjwYiWK3yYPz6iQ' // Argo CD 비밀번호

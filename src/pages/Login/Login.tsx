@@ -108,9 +108,9 @@ function Login() {
         </TextContainer>
         <IntroContainer>
           <IntroText>
-            GIGBOARD는 여러분을<br></br> 기다리고 있습니다?
+            GIGBOARD는 여러분을<br></br> 기다리고 있습니다.
           </IntroText>
-          <LoginButton onClick={handleKakaoLogin}>카카오톡으로 시작하기</LoginButton>
+          <LoginButton onClick={handleKakaoLogin}>파이프라인 테스트</LoginButton>
         </IntroContainer>
       </LoginWrapper>
     </div>

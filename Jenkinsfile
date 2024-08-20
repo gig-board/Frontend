@@ -45,7 +45,7 @@ pipeline {
       steps {
         script {
           // Clone the Git repository containing the Kubernetes manifests
-          checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[credentialsId: githubCredential, url: 'https://github.com/gig-board/DeploymentRepo.git']]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[credentialsId: githubCredential, url: 'https://github.com/gig-board/Frontend.git']]])
 
           // Update the deployment file with the new image tag
           def imageTag = "${dockerHubRegistry}:${newTag}"

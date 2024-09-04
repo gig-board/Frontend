@@ -3,8 +3,8 @@ pipeline {
 
   environment {
     dockerHubRegistry = 'potatoj1n/gigboard-fe'
-    dockerHubRegistryCredential = 'credential-dockerhub'
-    githubCredential = 'credential-github'
+    dockerHubRegistryCredential = 'credential-dockerhub-fe'
+    githubCredential = 'credential-github-fe'
     gitEmail = 'appabomul@gmail.com'
     gitName = 'potatoj1n'
     argoCDServer = '172.18.0.2:32025' // Argo CD 서버 주소

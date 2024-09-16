@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import { KAKAO_AUTH_URL } from '../../const/LoginApi';
+import axios from 'axios';
 
 const LoginWrapper = styled.div`
   width: 100%;
@@ -86,8 +87,16 @@ const LoginButton = styled.button`
 `;
 
 function Login() {
-  const handleKakaoLogin = () => {
-    window.location.href = KAKAO_AUTH_URL;
+  // const handleKakaoLogin = () => {
+  //   window.location.href = KAKAO_AUTH_URL;
+  // };
+  const handleTest = async () => {
+    try {
+      const response = await axios.get('http://gateway-service/gateway/place/hello');
+      console.log(response.data);
+    } catch (error) {
+      console.error('연결 실패');
+    }
   };
   return (
     <div className="bg-black m-0 p-0 overflow-hidden">
@@ -110,7 +119,7 @@ function Login() {
           <IntroText>
             GIGBOARD는 여러분을<br></br> 기다리고 있습니다.
           </IntroText>
-          <LoginButton onClick={handleKakaoLogin}>파이프라인 테스트</LoginButton>
+          <LoginButton onClick={handleTest}>파이프라인 테스트</LoginButton>
         </IntroContainer>
       </LoginWrapper>
     </div>

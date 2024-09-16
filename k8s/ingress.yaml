@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: frontend-ingress
-  namespace: frontend
+  name: backend-ingress
+  namespace: backend
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: 'false'
 spec:
@@ -10,10 +10,38 @@ spec:
     - host: localhost
       http:
         paths:
-          - path: /
+          - path: /gateway
             pathType: Prefix
             backend:
               service:
-                name: frontend-green
+                name: gateway-service
                 port:
-                  number: 80
+                  number: 8090
+          - path: /gateway/user
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 8091
+          - path: /gateway/club
+            pathType: Prefix
+            backend:
+              service:
+                name: club-service
+                port:
+                  number: 8092
+          - path: /gateway/place
+            pathType: Prefix
+            backend:
+              service:
+                name: place-service
+                port:
+                  number: 8093
+          - path: /gateway/recruit
+            pathType: Prefix
+            backend:
+              service:
+                name: recruit-service
+                port:
+                  number: 8094

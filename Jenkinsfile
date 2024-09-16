@@ -18,6 +18,11 @@ pipeline {
     stage('Checkout Application Git Branch') {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: githubCredential, url: 'https://github.com/gig-board/Frontend.git']]])
+        script {
+                    // Ensure we are on the correct branch
+                    sh 'git checkout main'
+                    sh 'git pull origin main'
+                }
       }
     }
 

@@ -92,7 +92,7 @@ function Login() {
   // };
   const handleTest = async () => {
     try {
-      const response = await axios.get('http://gateway-service/gateway/place/hello');
+      const response = await axios.get('http://localhost:8090/gateway/user/hello');
       console.log(response.data);
     } catch (error) {
       console.error('연결 실패');

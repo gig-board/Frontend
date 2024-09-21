@@ -61,7 +61,7 @@ pipeline {
                     sh """
                     git status
                     git add ${fileToUpdate}
-                    git commit -m 'Update image tag to ${DOCKER_IMAGE_TAG}' || echo 'No changes to commit'"
+                    git commit -m 'Update image tag to ${DOCKER_IMAGE_TAG}' || echo 'No changes to commit'
                     """
                 }
             }

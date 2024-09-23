@@ -119,7 +119,7 @@ function Login() {
           <IntroText>
             GIGBOARD는 여러분을<br></br> 기다리고 있습니다.
           </IntroText>
-          <LoginButton onClick={handleTest}>파이프라인 테스트</LoginButton>
+          <LoginButton onClick={handleTest}>파이프라인 연결 테스트</LoginButton>
         </IntroContainer>
       </LoginWrapper>
     </div>

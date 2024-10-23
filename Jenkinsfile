@@ -8,7 +8,7 @@ pipeline {
         DOCKER_IMAGE_TAG = "${env.BUILD_NUMBER}"
         gitEmail = 'appabomul@gmail.com'
         gitName = 'potatoj1n'
-        argoCDServer = '172.18.0.2:32025'
+        argoCDServer = '172.18.0.3:32025'
         argoCDAppName = 'gigboard-fe'
         argoCDUsername = 'admin'
         argoCDPassword = 'GcjwYiWK3yYPz6iQ'

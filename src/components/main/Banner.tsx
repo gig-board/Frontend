@@ -69,7 +69,7 @@ export default function Banner() {
       <SwiperSlide>
         <GreetingContainer>
           <span>
-            <SubTitleText className="mb-5">반갑습니다 {}님</SubTitleText>
+            <SubTitleText className="mb-5">반갑습니다 은진님</SubTitleText>
             <Link to="/bandpromotion">
               <EditText>나의 공연 홍보하기</EditText>
             </Link>
@@ -84,14 +84,14 @@ export default function Banner() {
         <PromotionContainer>
           <PromotionTextContainer>
             <span>
-              <PlainText className="text-white">날짜{}</PlainText>
-              <PlainText className="text-white">장소{}</PlainText>
+              <PlainText className="text-white">2024 . 11. 01</PlainText>
+              <PlainText className="text-white"></PlainText>
             </span>
-            <PlainText className="text-[#ff7417]">TEAM : {}팀</PlainText>
+            <PlainText className="text-[#ff7417]">TEAM : GIGBOARD</PlainText>
           </PromotionTextContainer>
           <PromotionImgContainer backgroundImageUrl={sample}>
             <PictureOverlay className="rounded-r-lg py-4 px-8">
-              <TitleText className="text-[#ff7417] text-end">공연 제목{}</TitleText>
+              <TitleText className="text-[#ff7417] text-end">가을 정기 공연</TitleText>
             </PictureOverlay>
           </PromotionImgContainer>
         </PromotionContainer>

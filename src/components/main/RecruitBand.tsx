@@ -8,6 +8,11 @@ import { styled } from 'styled-components';
 import { DetailText, PictureOverlay, SmallText } from '../../styles/GlobalStyle';
 
 import sample from '../../assets/sampleimage.png';
+import sample2 from '../../assets/sample2.png';
+import sample3 from '../../assets/sample3.png';
+import sample4 from '../../assets/sample4.png';
+import sample5 from '../../assets/sample5.png';
+import sample6 from '../../assets/sample6.png';
 
 const RecruitContents = styled.div<{ backgroundImageUrl: string }>`
   width: 100%;
@@ -97,17 +102,17 @@ export default function RecruitBand() {
           <RecruitContents backgroundImageUrl={sample}>
             <PictureOverlay className="rounded-lg">
               <RecruitText>
-                <DetailText className="text-white">모집 제목</DetailText>
-                <SmallText className="text-[#ff7417]">날짜</SmallText>
-                <SmallText className="text-white">모집 상세</SmallText>
+                <DetailText className="text-white">SUMMIT 모집</DetailText>
+                <SmallText className="text-[#ff7417]">2024.12.25</SmallText>
+                <SmallText className="text-white">베이스, 피아노..</SmallText>
               </RecruitText>
             </PictureOverlay>
           </RecruitContents>
         </RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer backgroundImageUrl={sample}>
-          <RecruitContents backgroundImageUrl={sample}>
+        <RecruitContainer backgroundImageUrl={sample2}>
+          <RecruitContents backgroundImageUrl={sample2}>
             <PictureOverlay className="rounded-lg">
               <RecruitText>
                 <DetailText className="text-white">모집 제목</DetailText>
@@ -119,8 +124,8 @@ export default function RecruitBand() {
         </RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer backgroundImageUrl={sample}>
-          <RecruitContents backgroundImageUrl={sample}>
+        <RecruitContainer backgroundImageUrl={sample3}>
+          <RecruitContents backgroundImageUrl={sample3}>
             <PictureOverlay className="rounded-lg">
               <RecruitText>
                 <DetailText className="text-white">모집 제목</DetailText>
@@ -132,19 +137,19 @@ export default function RecruitBand() {
         </RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer backgroundImageUrl={sample}></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample4}></RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer backgroundImageUrl={sample}></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample5}></RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer backgroundImageUrl={sample}></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample6}></RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer backgroundImageUrl={sample}></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample2}></RecruitContainer>
       </SwiperSlide>
       <SwiperSlide>
-        <RecruitContainer backgroundImageUrl={sample}></RecruitContainer>
+        <RecruitContainer backgroundImageUrl={sample3}></RecruitContainer>
       </SwiperSlide>
     </Swiper>
   );

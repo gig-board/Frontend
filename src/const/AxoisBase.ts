@@ -2,7 +2,7 @@ import axios from 'axios';
 import { TokenExpire } from '../services/UserApi';
 
 export const API_BASE_URL = axios.create({
-  baseURL: 'http://:8080/v1', // 배포
+  baseURL: 'http://localhost:8090/gateway/user/hello', // 배포
 });
 
 //요청 인터셉터

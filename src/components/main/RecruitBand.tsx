@@ -115,9 +115,9 @@ export default function RecruitBand() {
           <RecruitContents backgroundImageUrl={sample2}>
             <PictureOverlay className="rounded-lg">
               <RecruitText>
-                <DetailText className="text-white">모집 제목</DetailText>
-                <SmallText className="text-[#ff7417]">날짜</SmallText>
-                <SmallText className="text-white">모집 상세</SmallText>
+                <DetailText className="text-white">bloom</DetailText>
+                <SmallText className="text-[#ff7417]">2024.11.15</SmallText>
+                <SmallText className="text-white">피아노, 드럼..</SmallText>
               </RecruitText>
             </PictureOverlay>
           </RecruitContents>

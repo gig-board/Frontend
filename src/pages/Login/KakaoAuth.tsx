@@ -11,7 +11,7 @@ export default function KakaoAuth() {
       const FetchData = async () => {
         try {
           const response = await axios.post(`http://localhost:8090/v1/auth/login/kakao?code=${code}`);
-          console.log(response.data,"성공");
+          console.log(response.data, '성공');
 
           const ACCESS_TOKEN = response.data.accessToken;
           localStorage.setItem('accessToken', ACCESS_TOKEN);

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: potatoj1n/gigboard-fe:51
+          image: potatoj1n/gigboard-fe:52
           imagePullPolicy: Always
           ports:
             - containerPort: 80

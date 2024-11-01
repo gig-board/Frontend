@@ -12,7 +12,7 @@ export default function Main() {
       <GlobalContainer>
         <Banner />
         <TitleWrapper>
-          <SubTitleText>모집 중인 밴드</SubTitleText>
+          <SubTitleText>현재 모집 중인 밴드</SubTitleText>
           <Link to="/recruitband">
             <LinkText>더 알아보기</LinkText>
           </Link>
